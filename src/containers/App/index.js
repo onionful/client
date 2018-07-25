@@ -1,30 +1,20 @@
-import { React, Component } from 'utils/create';
-import { renderToStaticMarkup } from 'react-dom/server';
-import { withLocalize } from 'react-localize-redux';
+import { withTranslate } from 'helpers';
+import { compose, PropTypes, React } from 'utils/create';
 
-class App extends Component {
-  constructor(props) {
-    super(props);
+const App = ({ _ }) => (
+  <div className="App">
+    <header className="App-header">
+      <h1 className="App-title">{_('title')}</h1>
+    </header>
+    <p className="App-intro">
+      {_('foo.bar')}
+      To get started, edit <code>src/App.js</code> and save to reload.
+    </p>
+  </div>
+);
 
-    //this.props.initialize({
-    //  languages: [{ name: 'English', code: 'en' }, { name: 'Polish', code: 'pl' }],
-    //  translation: globalTranslations,
-    //  options: { renderToStaticMarkup },
-    //});
-  }
+App.propTypes = {
+  _: PropTypes.func.isRequired,
+};
 
-  render() {
-    return (
-      <div className="App">
-        <header className="App-header">
-          <h1 className="App-title">Welcome to React</h1>
-        </header>
-        <p className="App-intro">
-          To get started, edit <code>src/App.js</code> and save to reload.
-        </p>
-      </div>
-    );
-  }
-}
-
-export default withLocalize(App);
+export default compose(withTranslate)(App);

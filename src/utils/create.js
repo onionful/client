@@ -16,3 +16,6 @@ export const PropTypes = {
     validateFields: RPropTypes.func,
   }),
 };
+
+export const getDisplayName = WrappedComponent =>
+  WrappedComponent.displayName || WrappedComponent.name || 'Component';

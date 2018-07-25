@@ -1,3 +1,4 @@
+/* eslint-disable */
 import { all, put, takeLatest } from 'redux-saga/effects';
 
 function* handleAction({ payload }) {
