@@ -1,0 +1,40 @@
+{
+  "name": "react-bootstrap",
+  "version": "0.1.0",
+  "private": true,
+  "dependencies": {
+    "axios": "^0.18.0",
+    "connected-react-router": "^4.3.0",
+    "flat": "^4.1.0",
+    "glamor": "^2.20.40",
+    "glamorous": "^4.13.1",
+    "history": "latest",
+    "immutable": "^3.8.2",
+    "normalize.css": "^8.0.0",
+    "prop-types": "latest",
+    "react": "^16.4.1",
+    "react-dom": "^16.4.1",
+    "react-immutable-proptypes": "^2.1.0",
+    "react-localize-redux": "^3.2.4",
+    "react-redux": "^5.0.7",
+    "react-router-dom": "^4.3.1",
+    "react-router-prop-types": "^1.0.4",
+    "react-scripts": "1.1.4",
+    "redux": "^4.0.0",
+    "redux-form": "^7.4.2",
+    "redux-immutable": "^4.0.0",
+    "redux-promise-middleware": "^5.1.1",
+    "redux-saga": "^0.16.0",
+    "redux-thunk": "^2.3.0",
+    "type-to-reducer": "^1.1.0"
+  },
+  "scripts": {
+    "start": "react-scripts start",
+    "build": "react-scripts build",
+    "test": "react-scripts test --env=jsdom",
+    "eject": "react-scripts eject"
+  },
+  "devDependencies": {
+    "prettier": "^1.13.7"
+  }
+}
