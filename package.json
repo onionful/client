@@ -9,20 +9,23 @@
     "eject": "react-app-rewired eject"
   },
   "dependencies": {
+    "antd": "^3.7.2",
     "axios": "^0.18.0",
     "connected-react-router": "^4.3.0",
-    "flat": "^4.1.0",
     "glamor": "^2.20.40",
     "glamorous": "^4.13.1",
-    "history": "latest",
+    "history": "^4.7.2",
     "immutable": "^3.8.2",
+    "lodash": "^4.17.10",
     "normalize.css": "^8.0.0",
-    "prop-types": "latest",
+    "prop-types": "^15.6.2",
     "react": "^16.4.1",
     "react-dom": "^16.4.1",
+    "react-helmet": "^5.2.0",
     "react-immutable-proptypes": "^2.1.0",
     "react-localize-redux": "^3.2.4",
     "react-redux": "^5.0.7",
+    "react-responsive": "^5.0.0",
     "react-router-dom": "^4.3.1",
     "react-router-prop-types": "^1.0.4",
     "react-scripts": "1.1.4",
@@ -32,8 +35,7 @@
     "redux-promise-middleware": "^5.1.1",
     "redux-saga": "^0.16.0",
     "redux-thunk": "^2.3.0",
-    "type-to-reducer": "^1.1.0",
-    "lodash": "latest"
+    "type-to-reducer": "^1.1.0"
   },
   "devDependencies": {
     "babel-plugin-import": "^1.8.0",
@@ -46,7 +48,7 @@
     "eslint-plugin-react": "^7.10.0",
     "prettier": "^1.13.7",
     "react-app-rewire-eslint": "^0.2.3",
-    "react-app-rewire-less": "^2.1.2",
+    "react-app-rewire-less": "^2.1.1",
     "react-app-rewire-yaml": "^1.0.0",
     "react-app-rewired": "^1.5.2"
   }
