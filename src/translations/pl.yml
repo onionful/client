@@ -1,3 +1,17 @@
 title: Witaj Onionful!
-content: Jakaś treść
 footer: Onionful Client stworzony przez @hsz
+
+menu:
+  main: Strona główna
+  news: Aktualności
+  contact: Kontakt
+  facebook: Facebook
+
+content: Jakaś treść
+contact: >
+  # Kontakt
+
+  Adres e-mail: [foo@bar.buz](mailto:foo@bar.buz)
+
+
+  Telefon: +48 123 456 789
