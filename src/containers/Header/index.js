@@ -1,4 +1,4 @@
-import { Button, Col, Drawer, Icon, Layout, Menu, Row } from 'antd';
+import { Button, Col, Drawer, Icon, Menu, Row } from 'antd';
 import { Link, Logo, Responsive } from 'components';
 import config from 'config';
 import { withTranslate } from 'helpers';
@@ -23,14 +23,6 @@ const drawerStyle = css({
 }).toString();
 
 const toRight = css({ float: 'right' }).toString();
-
-const StyledHeader = glamorous(Layout.Header)({
-  padding: 0,
-  position: 'fixed',
-  width: '100%',
-  height: config.ui.headerHeight,
-  color: 'white',
-});
 
 const CenteredCol = glamorous(Col)({
   textAlign: 'center',
@@ -84,7 +76,7 @@ class Header extends Component {
     );
 
     return (
-      <StyledHeader>
+      <div>
         <Row type="flex" align="middle">
           <Col xs={20} md={6}>
             <Logo />
@@ -108,7 +100,7 @@ class Header extends Component {
             {menu()}
           </Drawer>
         </Responsive>
-      </StyledHeader>
+      </div>
     );
   }
 }

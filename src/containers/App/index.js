@@ -3,19 +3,30 @@ import config from 'config';
 import { ContactPage, Header, HomePage } from 'containers';
 import { withTranslate } from 'helpers';
 import { Route, Switch } from 'react-router-dom';
+import { media } from 'utils';
 import { compose, glamorous, PropTypes, React } from 'utils/create';
 
 const StyledLayout = glamorous(Layout)({
   height: '100%',
-});
-
-const Container = glamorous(Layout.Content)({
   display: 'flex',
   flexDirection: 'column',
-  marginTop: config.ui.headerHeight,
 });
 
-const Content = glamorous.div({
+const ResponsiveWrapper = glamorous.div({
+  maxWidth: media.xl,
+  margin: '0 auto',
+});
+
+const HeaderWrapper = glamorous(Layout.Header)({
+  padding: 0,
+  position: 'fixed',
+  width: '100%',
+  height: config.ui.headerHeight,
+  color: 'white',
+});
+
+const ContentWrapper = glamorous(Layout.Content)({
+  marginTop: config.ui.headerHeight,
   flex: 1,
   padding: '1rem',
   fontSize: '1rem',
@@ -26,16 +37,20 @@ const Footer = glamorous(Layout.Footer)({});
 
 const App = ({ _ }) => (
   <StyledLayout>
-    <Header />
-    <Container>
-      <Content>
+    <HeaderWrapper>
+      <ResponsiveWrapper>
+        <Header />
+      </ResponsiveWrapper>
+    </HeaderWrapper>
+    <ContentWrapper>
+      <ResponsiveWrapper>
         <Switch>
           <Route exact path="/" component={HomePage} />
           <Route exact path="/contact" component={ContactPage} />
         </Switch>
-      </Content>
-      <Footer style={{ textAlign: 'center' }}>{_('footer')}</Footer>
-    </Container>
+      </ResponsiveWrapper>
+    </ContentWrapper>
+    <Footer style={{ textAlign: 'center' }}>{_('footer')}</Footer>
   </StyledLayout>
 );
 
