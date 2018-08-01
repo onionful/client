@@ -5,7 +5,6 @@ import RRPropTypes from 'react-router-prop-types';
 
 export { default as glamorous } from 'glamorous';
 export { css } from 'glamor';
-export { default as Responsive } from 'react-responsive';
 export { compose } from 'redux';
 export { connect } from 'react-redux';
 export { React, Component };

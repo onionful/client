@@ -1,7 +1,9 @@
 import { Button, Col, Drawer, Icon, Layout, Menu, Row } from 'antd';
-import { Link, Logo } from 'components';
+import { Link, Logo, Responsive } from 'components';
+import config from 'config';
 import { withTranslate } from 'helpers';
 import { withRouter } from 'react-router-dom';
+import { media } from 'utils';
 import { Component, compose, css, glamorous, PropTypes, React } from 'utils/create';
 
 const drawerStyle = css({
@@ -9,10 +11,24 @@ const drawerStyle = css({
     margin: 0,
     padding: 0,
   },
-});
+  '& .ant-drawer-header': {
+    height: config.ui.headerHeight,
+  },
+  '& .ant-drawer-title': {
+    padding: '5px 0',
+  },
+  '& .ant-drawer-close': {
+    padding: '4px',
+  },
+}).toString();
+
+const toRight = css({ float: 'right' }).toString();
 
 const StyledHeader = glamorous(Layout.Header)({
   padding: 0,
+  position: 'fixed',
+  width: '100%',
+  height: config.ui.headerHeight,
   color: 'white',
 });
 
@@ -53,35 +69,45 @@ class Header extends Component {
       { key: 'facebook', path: 'https://facebook.com', icon: 'facebook' },
     ];
 
+    console.log('pathname', pathname);
+    const menu = params => (
+      <Menu {...params} selectedKeys={[pathname]} onClick={this.toggleDrawer}>
+        {items.map(({ path, key, icon }) => (
+          <Menu.Item key={path}>
+            <Link to={path}>
+              <Icon type={icon} />
+              {_(`menu.${key}`)}
+            </Link>
+          </Menu.Item>
+        ))}
+      </Menu>
+    );
+
     return (
       <StyledHeader>
-        <Row type="flex" justify="space-between" align="middle">
-          <Col span={12}>
+        <Row type="flex" align="middle">
+          <Col xs={20} md={6}>
             <Logo />
           </Col>
-          <CenteredCol span={4}>
+          <Col xs={0} md={18}>
+            {menu({ mode: 'horizontal', theme: 'dark', className: toRight })}
+          </Col>
+          <CenteredCol xs={4} md={0}>
             <Hamburger onClick={this.toggleDrawer} visible={drawerVisible} />
           </CenteredCol>
         </Row>
 
-        <Drawer
-          title={<Logo />}
-          placement="left"
-          onClose={this.toggleDrawer}
-          visible={drawerVisible}
-          wrapClassName={`${drawerStyle}`}
-        >
-          <Menu selectedKeys={[pathname]} onClick={this.toggleDrawer}>
-            {items.map(({ path, key, icon }) => (
-              <Menu.Item key={key}>
-                <Link to={path}>
-                  <Icon type={icon} />
-                  {_(`menu.${key}`)}
-                </Link>
-              </Menu.Item>
-            ))}
-          </Menu>
-        </Drawer>
+        <Responsive maxWidth={media.md}>
+          <Drawer
+            title={<Logo />}
+            placement="left"
+            onClose={this.toggleDrawer}
+            visible={drawerVisible}
+            wrapClassName={drawerStyle}
+          >
+            {menu()}
+          </Drawer>
+        </Responsive>
       </StyledHeader>
     );
   }
