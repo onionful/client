@@ -1,5 +1,5 @@
 import { ConnectedRouter } from 'connected-react-router/immutable';
-import { App } from 'containers';
+import App from 'containers/App';
 import 'glamor/reset';
 import { render } from 'react-dom';
 import { LocalizeProvider } from 'react-localize-redux';

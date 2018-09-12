@@ -61,7 +61,6 @@ class Header extends Component {
       { key: 'facebook', path: 'https://facebook.com', icon: 'facebook' },
     ];
 
-    console.log('pathname', pathname);
     const menu = params => (
       <Menu {...params} selectedKeys={[pathname]} onClick={this.toggleDrawer}>
         {items.map(({ path, key, icon }) => (
