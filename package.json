@@ -7,7 +7,11 @@
     "start": "react-app-rewired start",
     "build": "react-app-rewired build",
     "test": "react-app-rewired test --env=jsdom",
-    "eject": "react-app-rewired eject"
+    "eject": "react-app-rewired eject",
+    "deploy": "bnr deploy"
+  },
+  "betterScripts": {
+    "deploy": "npm run build && s3-deploy './build/**' --cwd './build/' --region ${AWS_REGION} --profile ${AWS_PROFILE} --bucket ${AWS_BUCKET} --distId ${AWS_CLOUDFRONT_DISTRIBUTION_ID} --invalidate '${AWS_CLOUDFRONT_INVALIDATE}'"
   },
   "dependencies": {
     "antd": "^3.9.2",
