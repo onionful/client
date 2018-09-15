@@ -4,7 +4,7 @@ import ReactResponsive from 'react-responsive';
 const Responsive = ({ children, maxDeviceWidth, maxWidth, ...props }) => (
   <ReactResponsive
     {...props}
-    maxDeviceWidth={maxDeviceWidth > 0 ? maxDeviceWidth - 1 : maxWidth}
+    maxDeviceWidth={maxDeviceWidth > 0 ? maxDeviceWidth - 1 : maxDeviceWidth}
     maxWidth={maxWidth > 0 ? maxWidth - 1 : maxWidth}
   >
     {children}
