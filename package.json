@@ -12,7 +12,7 @@
     "deploy": "bnr deploy"
   },
   "betterScripts": {
-    "deploy": "npm run build && s3-deploy './build/**' --cwd './build/' --region ${AWS_REGION} --profile ${AWS_PROFILE} --bucket ${AWS_BUCKET} --distId ${AWS_CLOUDFRONT_DISTRIBUTION_ID} --invalidate '${AWS_CLOUDFRONT_INVALIDATE}'"
+    "deploy": "npm run build && s3-deploy './build/**' --cwd './build/' --region ${AWS_REGION} --profile ${AWS_PROFILE} --bucket ${AWS_BUCKET} --distId ${AWS_CLOUDFRONT_DISTRIBUTION_ID} --invalidate ${AWS_CLOUDFRONT_INVALIDATE}"
   },
   "dependencies": {
     "antd": "^3.9.2",
