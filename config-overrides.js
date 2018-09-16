@@ -14,7 +14,10 @@ module.exports = compose(
     javascriptEnabled: true,
     modifyVars: {
       // https://github.com/ant-design/ant-design/blob/master/components/style/themes/default.less
-      //'@component-background': 'transparent',
+      '@primary-color': '#9BC4CB',
+      '@menu-bg': 'transparent',
+      '@menu-dark-bg': 'transparent',
+      '@menu-dark-item-active-bg': 'transparent',
     },
   }),
 );

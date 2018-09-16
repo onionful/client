@@ -1,10 +1,16 @@
 import { Layout } from 'antd';
+import { ContentWrapper } from 'components';
 import config from 'config';
 import { ContactPage, Header, HomePage } from 'containers';
 import { withTranslate } from 'helpers';
-import { Route, Switch } from 'react-router-dom';
-import { media } from 'utils';
-import { compose, glamorous, PropTypes, React } from 'utils/create';
+import { fromJS } from 'immutable';
+import { noop } from 'lodash';
+import { Route, Switch, withRouter } from 'react-router-dom';
+import { animateScroll } from 'react-scroll';
+import { CSSTransition, TransitionGroup } from 'react-transition-group';
+import { setTransparentHeader } from 'reducers/ui/actions';
+import { Component, compose, connect, glamorous, PropTypes, React } from 'utils/create';
+import { colors } from 'utils/variables';
 
 const StyledLayout = glamorous(Layout)({
   height: '100%',
@@ -12,50 +18,133 @@ const StyledLayout = glamorous(Layout)({
   flexDirection: 'column',
 });
 
-const ResponsiveWrapper = glamorous.div({
-  maxWidth: media.xl,
-  margin: '0 auto',
-});
-
-const HeaderWrapper = glamorous(Layout.Header)({
+const HeaderWrapper = glamorous(({ transparent, children, ...props }) => (
+  <Layout.Header {...props}>{children}</Layout.Header>
+))(({ transparent }) => ({
   padding: 0,
   position: 'fixed',
+  zIndex: 100,
   width: '100%',
   height: config.ui.headerHeight,
-  color: 'white',
-});
+  transition: 'all 200ms',
 
-const ContentWrapper = glamorous(Layout.Content)({
-  marginTop: config.ui.headerHeight,
+  ...(transparent
+    ? {
+        color: colors.white,
+        backgroundColor: 'transparent',
+        padding: '1rem 0',
+      }
+    : {
+        color: colors.black,
+        backgroundColor: colors.background,
+        boxShadow: '0 0 10px 0 rgba(0, 0, 0, .25)',
+      }),
+}));
+
+const Content = glamorous(Layout.Content)({
   flex: 1,
-  padding: '1rem',
   fontSize: '1rem',
-  backgroundColor: 'white',
+  backgroundColor: colors.background,
 });
 
 const Footer = glamorous(Layout.Footer)({});
 
-const App = ({ _ }) => (
-  <StyledLayout>
-    <HeaderWrapper>
-      <ResponsiveWrapper>
-        <Header />
-      </ResponsiveWrapper>
-    </HeaderWrapper>
-    <ContentWrapper>
-      <ResponsiveWrapper>
-        <Switch>
-          <Route exact path="/" component={HomePage} />
-          <Route exact path="/contact" component={ContactPage} />
-        </Switch>
-      </ResponsiveWrapper>
-    </ContentWrapper>
-    <Footer style={{ textAlign: 'center' }}>{_('footer')}</Footer>
-  </StyledLayout>
-);
+class App extends Component {
+  state = {
+    routes: fromJS([
+      { key: 'main', path: '/', component: HomePage },
+      { key: 'news', path: '/contact', component: ContactPage },
+    ]),
+  };
+
+  componentDidMount() {
+    const { handleSetTransparentHeader, history } = this.props;
+    const { routes } = this.state;
+
+    history.listen(location => {
+      const { pathname, hash } = location;
+      const route = routes.find(item => item.get('path') === `${pathname}${hash}`);
+
+      handleSetTransparentHeader(this.isHomePage(location));
+
+      switch (route.get('key')) {
+        default:
+          return animateScroll.scrollToTop();
+      }
+    });
+    window.addEventListener('scroll', this.handleScroll);
+    this.handleScroll();
+  }
+
+  componentWillUnmount() {
+    window.removeEventListener('scroll', this.handleScroll);
+  }
+
+  handleScroll = () => {
+    const { location, handleSetTransparentHeader, transparentHeader } = this.props;
+
+    const newTransparentHeader = window.pageYOffset < 100 && this.isHomePage(location);
+    if (transparentHeader !== newTransparentHeader) {
+      handleSetTransparentHeader(newTransparentHeader);
+    }
+  };
+
+  isHomePage = ({ pathname }) => pathname === '/';
+
+  render() {
+    const { _, location, transparentHeader } = this.props;
+    const { routes } = this.state;
+
+    return (
+      <StyledLayout>
+        <HeaderWrapper transparent={transparentHeader}>
+          <ContentWrapper>
+            <Header routes={routes} />
+          </ContentWrapper>
+        </HeaderWrapper>
+        <Content>
+          <TransitionGroup>
+            <CSSTransition key={location.pathname} timeout={300} classNames="fade">
+              <Switch>
+                {routes.toJS().map(({ key, path, component }) => (
+                  <Route key={key} exact path={path} component={component} />
+                ))}
+              </Switch>
+            </CSSTransition>
+          </TransitionGroup>
+        </Content>
+        <Footer style={{ textAlign: 'center' }}>{_('footer')}</Footer>
+      </StyledLayout>
+    );
+  }
+}
 
 App.propTypes = {
   _: PropTypes.func.isRequired,
+  history: PropTypes.history.isRequired,
+  location: PropTypes.location.isRequired,
+  transparentHeader: PropTypes.bool,
+  handleSetTransparentHeader: PropTypes.func,
 };
 
-export default compose(withTranslate)(App);
+App.defaultProps = {
+  transparentHeader: true,
+  handleSetTransparentHeader: noop,
+};
+
+const mapStateToProps = state => ({
+  transparentHeader: state.getIn(['ui', 'transparentHeader']),
+});
+
+const mapDispatchToProps = dispatch => ({
+  handleSetTransparentHeader: transparent => dispatch(setTransparentHeader(transparent)),
+});
+
+export default compose(
+  connect(
+    mapStateToProps,
+    mapDispatchToProps,
+  ),
+  withRouter,
+  withTranslate,
+)(App);

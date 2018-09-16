@@ -18,6 +18,10 @@ const root = document.getElementById('root');
 
 css.global('#root', { height: '100%' });
 css.insert(typography.toString());
+css.insert(`
+  .fade-enter { opacity: 0; z-index: 1; }
+  .fade-enter.fade-enter-active { opacity: 1; transition: opacity 250ms ease-in; }
+`);
 
 (root.hasChildNodes() ? hydrate : render)(
   <Provider store={store}>
