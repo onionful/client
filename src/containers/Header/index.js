@@ -22,7 +22,13 @@ const drawerStyle = css({
   },
 }).toString();
 
-const toRight = css({ float: 'right' }).toString();
+const toRight = css({
+  float: 'right',
+
+  '& li': {
+    marginBottom: 0,
+  },
+}).toString();
 
 const CenteredCol = glamorous(Col)({
   textAlign: 'center',

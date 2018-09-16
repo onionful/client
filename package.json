@@ -44,7 +44,9 @@
     "redux-promise-middleware": "^5.1.1",
     "redux-saga": "^0.16.0",
     "redux-thunk": "^2.3.0",
-    "type-to-reducer": "^1.1.0"
+    "type-to-reducer": "^1.1.0",
+    "typography": "^0.16.17",
+    "typography-theme-de-young": "^0.16.9"
   },
   "devDependencies": {
     "babel-plugin-import": "^1.8.0",
