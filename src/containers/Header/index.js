@@ -13,7 +13,7 @@ const drawerStyle = css({
     padding: 0,
   },
   '& .ant-drawer-header': {
-    height: config.ui.headerHeight,
+    height: config.ui.headerHeightPx,
   },
   '& .ant-drawer-title': {
     padding: '5px 0',

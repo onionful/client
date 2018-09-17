@@ -25,7 +25,7 @@ const HeaderWrapper = glamorous(({ transparent, children, ...props }) => (
   position: 'fixed',
   zIndex: 100,
   width: '100%',
-  height: config.ui.headerHeight,
+  height: config.ui.headerHeightPx,
   transition: 'all 200ms',
 
   ...(transparent

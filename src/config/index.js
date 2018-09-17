@@ -5,6 +5,7 @@ export default {
     space: process.env.REACT_APP_AUTH0_DOMAIN,
   },
   ui: {
-    headerHeight: '64px',
+    headerHeight: 64,
+    headerHeightPx: '64px',
   },
 };

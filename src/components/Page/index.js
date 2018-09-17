@@ -4,7 +4,7 @@ import { compose, glamorous, PropTypes, React } from 'utils/create';
 import ContentWrapper from '../ContentWrapper';
 
 const StyledPage = glamorous.section({
-  marginTop: config.ui.headerHeight,
+  marginTop: config.ui.headerHeightPx,
   padding: '1rem 0',
 });
 

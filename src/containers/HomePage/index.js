@@ -3,7 +3,7 @@ import { glamorous, React } from 'utils/create';
 import config from 'config';
 
 const HomePageWrapper = glamorous.div({
-  marginTop: config.ui.headerHeight,
+  marginTop: config.ui.headerHeightPx,
   overflow: 'hidden',
 });
 
