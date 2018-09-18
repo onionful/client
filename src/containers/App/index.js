@@ -5,10 +5,13 @@ import { ContactPage, Header, HomePage } from 'containers';
 import { withTranslate } from 'helpers';
 import { fromJS } from 'immutable';
 import { noop } from 'lodash';
+import { Helmet } from 'react-helmet';
 import { Route, Switch, withRouter } from 'react-router-dom';
 import { animateScroll } from 'react-scroll';
 import { CSSTransition, TransitionGroup } from 'react-transition-group';
+import { GoogleFont, TypographyStyle } from 'react-typography';
 import { setTransparentHeader } from 'reducers/ui/actions';
+import { typography } from 'utils';
 import { Component, compose, connect, glamorous, PropTypes, React } from 'utils/create';
 import { colors } from 'utils/variables';
 
@@ -97,6 +100,10 @@ class App extends Component {
 
     return (
       <StyledLayout>
+        <Helmet>
+          <TypographyStyle typography={typography} />
+          <GoogleFont typography={typography} />
+        </Helmet>
         <HeaderWrapper transparent={transparentHeader}>
           <ContentWrapper>
             <Header routes={routes} />
