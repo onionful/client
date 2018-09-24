@@ -1,5 +1,6 @@
 export { default as Content } from './Content';
 export { default as ContentWrapper } from './ContentWrapper';
+export { default as Gallery } from './Gallery';
 export { default as Link } from './Link';
 export { default as Logo } from './Logo';
 export { default as Markdown } from './Markdown';

@@ -1,4 +1,4 @@
-import { ContentWrapper } from 'components';
+import { ContentWrapper, Gallery } from 'components';
 import { glamorous, React } from 'utils/create';
 import config from 'config';
 
@@ -17,6 +17,7 @@ const HomePage = () => (
           vitae. At commodi corporis delectus dolorem exercitationem expedita facilis optio quia,
           quis quisquam rem repellendus vitae, voluptatibus.
         </p>
+        <Gallery images={[]} />
         <p>
           Lorem ipsum dolor sit amet, consectetur adipisicing elit. Alias blanditiis ducimus
           laudantium nesciunt placeat? Amet cupiditate deleniti dolor earum eos harum iure libero,
