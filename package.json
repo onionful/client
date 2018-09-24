@@ -8,9 +8,7 @@
     "build": "react-app-rewired build",
     "postbuild": "react-snap",
     "serve": "bnr serve",
-    "deploy": "bnr deploy",
-    "test": "react-app-rewired test --env=jsdom",
-    "eject": "react-app-rewired eject"
+    "deploy": "bnr deploy"
   },
   "betterScripts": {
     "serve": "serve -l ${SERVE_PORT} ./build",
