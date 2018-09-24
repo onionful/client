@@ -13,7 +13,7 @@ import { Component, compose, connect, glamorous, PropTypes, React } from 'utils/
 import { colors } from 'utils/variables';
 
 const StyledLayout = glamorous(Layout)({
-  height: '100%',
+  minHeight: '100%',
   display: 'flex',
   flexDirection: 'column',
 });
