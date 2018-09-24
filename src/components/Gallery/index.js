@@ -44,7 +44,7 @@ class Gallery extends Component {
     return (
       <GalleryWrapper>
         <PhotoGallery
-          onClick={isSingle ? this.handlePhotoClick : null}
+          onClick={isSingle ? null : this.handlePhotoClick}
           columns={columns}
           photos={images.map(image => ({ ...image, src: image.original }))}
           ImageComponent={props => <Photo {...props} isSingle={isSingle} />}
