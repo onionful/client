@@ -1,6 +1,7 @@
 import Lightbox from 'react-images';
 import PhotoGallery from 'react-photo-gallery';
 import { Component, glamorous, PropTypes, React } from 'utils/create';
+import Photo from './Photo';
 
 const GalleryWrapper = glamorous.div({
   margin: '3rem 0',
@@ -38,14 +39,15 @@ class Gallery extends Component {
     const { images } = this.props;
     const { currentImage, preview } = this.state;
     const columns = Math.min(images.length, 3);
-    const onPhotoClick = images.length > 1 ? this.handlePhotoClick : null;
+    const isSingle = images.length === 1;
 
     return (
       <GalleryWrapper>
         <PhotoGallery
-          onClick={onPhotoClick}
+          onClick={isSingle ? this.handlePhotoClick : null}
           columns={columns}
           photos={images.map(image => ({ ...image, src: image.original }))}
+          ImageComponent={props => <Photo {...props} isSingle={isSingle} />}
         />
         <Lightbox
           images={images.map(image => ({

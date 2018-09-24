@@ -12,12 +12,16 @@ const HomePage = () => (
     <section>
       <ContentWrapper>
         <h1>Home</h1>
-        <p>
-          Lorem ipsum dolor sit amet, consectetur adipisicing elit. Impedit in magnam odio unde
-          vitae. At commodi corporis delectus dolorem exercitationem expedita facilis optio quia,
-          quis quisquam rem repellendus vitae, voluptatibus.
-        </p>
-        <Gallery images={[]} />
+        <Gallery
+          images={[
+            {
+              original: 'https://thenypost.files.wordpress.com/2018/02/aple-cobalt-deals.jpg?quality=90&strip=all&w=618&h=410&crop=1',
+              width: 1600,
+              height: 1063,
+              description: 'Rezultaty skanowania schronu Granit na ekranie urządzenia mobilnego.',
+            },
+          ]}
+        />
         <p>
           Lorem ipsum dolor sit amet, consectetur adipisicing elit. Alias blanditiis ducimus
           laudantium nesciunt placeat? Amet cupiditate deleniti dolor earum eos harum iure libero,
