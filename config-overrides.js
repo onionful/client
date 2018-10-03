@@ -5,10 +5,7 @@ const rewireLess = require('react-app-rewire-less');
 
 module.exports = compose(
   rewireYAML,
-  (config, env) =>
-    rewireESLint(config, env, options =>
-      Object.assign(options, { eslintPath: require.resolve('eslint') }),
-    ),
+  rewireESLint,
   config => injectBabelPlugin(['import', { libraryName: 'antd', style: true }], config),
   rewireLess.withLoaderOptions({
     javascriptEnabled: true,

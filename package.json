@@ -54,7 +54,6 @@
   "devDependencies": {
     "babel-plugin-import": "^1.9.1",
     "better-npm-run": "^0.1.1",
-    "eslint": "^5.6.1",
     "eslint-config-airbnb": "^17.1.0",
     "eslint-config-prettier": "^3.1.0",
     "eslint-import-resolver-node": "^0.3.2",
@@ -71,5 +70,11 @@
     "react-snap": "^1.19.0",
     "s3-deploy": "^1.1.1",
     "serve": "^10.0.2"
-  }
+  },
+  "browserslist": [
+    ">0.2%",
+    "not dead",
+    "not ie <= 11",
+    "not op_mini all"
+  ]
 }
