@@ -52,7 +52,7 @@ const Footer = glamorous(Layout.Footer)({});
 class App extends Component {
   state = {
     routes: fromJS([
-      { key: 'main', path: '/', component: HomePage },
+      { key: 'main', exact: true, path: '/', component: HomePage },
       { key: 'news', path: '/contact', component: ContactPage },
     ]),
   };
@@ -106,8 +106,8 @@ class App extends Component {
           <TransitionGroup>
             <CSSTransition key={location.pathname} timeout={300} classNames="fade">
               <Switch>
-                {routes.toJS().map(({ key, path, component }) => (
-                  <Route key={key} exact path={path} component={component} />
+                {routes.toJS().map(route => (
+                  <Route {...route} />
                 ))}
               </Switch>
             </CSSTransition>
