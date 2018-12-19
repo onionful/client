@@ -1,7 +1,7 @@
 import { Icon } from 'antd';
-import { glamorous, PropTypes, React } from 'utils/create';
+import { styled, PropTypes, React } from 'utils/create';
 
-const Logo = glamorous(({ className }) => (
+const Logo = styled(({ className }) => (
   <div className={className}>
     <Icon type="star" /> Project name
   </div>

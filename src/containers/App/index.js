@@ -9,16 +9,16 @@ import { Route, Switch, withRouter } from 'react-router-dom';
 import { animateScroll } from 'react-scroll';
 import { CSSTransition, TransitionGroup } from 'react-transition-group';
 import { setTransparentHeader } from 'reducers/ui/actions';
-import { Component, compose, connect, glamorous, PropTypes, React } from 'utils/create';
+import { Component, compose, connect, styled, PropTypes, React } from 'utils/create';
 import { colors } from 'utils/variables';
 
-const StyledLayout = glamorous(Layout)({
+const StyledLayout = styled(Layout)({
   minHeight: '100%',
   display: 'flex',
   flexDirection: 'column',
 });
 
-const HeaderWrapper = glamorous(({ transparent, children, ...props }) => (
+const HeaderWrapper = styled(({ transparent, children, ...props }) => (
   <Layout.Header {...props}>{children}</Layout.Header>
 ))(({ transparent }) => ({
   padding: 0,
@@ -41,13 +41,13 @@ const HeaderWrapper = glamorous(({ transparent, children, ...props }) => (
       }),
 }));
 
-const Content = glamorous(Layout.Content)({
+const Content = styled(Layout.Content)({
   flex: 1,
   fontSize: '1rem',
   backgroundColor: colors.background,
 });
 
-const Footer = glamorous(Layout.Footer)({});
+const Footer = styled(Layout.Footer)({});
 
 class App extends Component {
   state = {

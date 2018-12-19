@@ -1,8 +1,8 @@
 import { ContentWrapper, Gallery } from 'components';
-import { glamorous, React } from 'utils/create';
+import { styled, React } from 'utils/create';
 import config from 'config';
 
-const HomePageWrapper = glamorous.div({
+const HomePageWrapper = styled.div({
   marginTop: config.ui.headerHeightPx,
   overflow: 'hidden',
 });

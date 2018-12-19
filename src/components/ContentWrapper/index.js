@@ -1,7 +1,7 @@
 import { media } from 'utils';
-import { glamorous } from 'utils/create';
+import { styled } from 'utils/create';
 
-const ContentWrapper = glamorous.div({
+const ContentWrapper = styled.div({
   maxWidth: media.xl,
   margin: '0 auto',
   padding: '0 2rem',

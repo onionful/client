@@ -4,7 +4,7 @@ import config from 'config';
 import { withTranslate } from 'helpers';
 import { withRouter } from 'react-router-dom';
 import { media } from 'utils';
-import { Component, compose, connect, css, glamorous, PropTypes, React } from 'utils/create';
+import { Component, compose, connect, css, styled, PropTypes, React } from 'utils/create';
 import { colors } from 'utils/variables';
 
 const drawerStyle = css({
@@ -37,11 +37,11 @@ const toRight = transparent =>
     },
   }).toString();
 
-const CenteredCol = glamorous(Col)({
+const CenteredCol = styled(Col)({
   textAlign: 'center',
 });
 
-const Hamburger = glamorous(({ visible, transparent, ...props }) => (
+const Hamburger = styled(({ visible, transparent, ...props }) => (
   <Button ghost icon={visible ? 'menu-fold' : 'menu-unfold'} {...props} />
 ))(({ transparent }) => ({
   border: 'none',

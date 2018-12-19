@@ -1,9 +1,9 @@
 import config from 'config';
 import { withTranslate } from 'helpers';
-import { compose, glamorous, PropTypes, React } from 'utils/create';
+import { compose, styled, PropTypes, React } from 'utils/create';
 import ContentWrapper from '../ContentWrapper';
 
-const StyledPage = glamorous.section({
+const StyledPage = styled.section({
   marginTop: config.ui.headerHeightPx,
   padding: '1rem 0',
 });

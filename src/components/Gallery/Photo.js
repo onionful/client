@@ -1,9 +1,9 @@
 import { noop } from 'lodash';
-import { glamorous, PropTypes, React } from 'utils/create';
+import { styled, PropTypes, React } from 'utils/create';
 
 const imgWithClick = { cursor: 'pointer' };
 
-const Description = glamorous.p({
+const Description = styled.p({
   fontStyle: 'italic',
 });
 

@@ -1,9 +1,9 @@
 import Lightbox from 'react-images';
 import PhotoGallery from 'react-photo-gallery';
-import { Component, glamorous, PropTypes, React } from 'utils/create';
+import { Component, styled, PropTypes, React } from 'utils/create';
 import Photo from './Photo';
 
-const GalleryWrapper = glamorous.div({
+const GalleryWrapper = styled.div({
   margin: '3rem 0',
 
   '& .react-photo-gallery--gallery div': {
